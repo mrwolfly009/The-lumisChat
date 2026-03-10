@@ -177,7 +177,7 @@ function loadSidebarChannels() {
     database.ref('channel_list').on('value', (snapshot) => {
         const container = document.getElementById('dynamic-channels');
         container.innerHTML = ""; 
-        createSidebarIcon(container, "general-chat", "L");
+        createSidebarIcon(container, "general-chat", "G");
         snapshot.forEach((child) => {
             const data = child.val();
             createSidebarIcon(container, data.name, data.icon, child.key);
