@@ -1,0 +1,185 @@
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #050505; color: #00ff41;
+    /* dvh use korle mobile browser-er address bar-er niche input box kete jabe na */
+    height: 100dvh; 
+    overflow: hidden;
+}
+
+/* 1. Container Layout */
+.app-container {
+    display: flex; flex-direction: column; 
+    height: 100dvh; /* Full screen height logic update */
+}
+
+/* 2. Top Navigation (Sidebar) */
+.sidebar {
+    height: 60px; width: 100%;
+    background-color: #000;
+    display: flex; align-items: center;
+    padding: 0 10px; gap: 10px;
+    border-bottom: 1px solid #0044aa;
+    flex-shrink: 0;
+}
+
+.add-server {
+    border: 1px dashed #00ff41; color: #00ff41;
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0;
+    border-radius: 4px; font-size: 20px;
+}
+
+.channel-scroll-container {
+    display: flex; gap: 10px;
+    overflow-x: auto; flex: 1;
+    align-items: center; scrollbar-width: none;
+}
+.channel-scroll-container::-webkit-scrollbar { display: none; }
+
+.server-icon {
+    width: 42px; height: 42px;
+    background-color: #0a0a0a; color: #0066ff;
+    border: 1px solid #002266; border-radius: 4px;
+    cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    flex-shrink: 0; font-weight: bold;
+}
+.server-icon.active {
+    border-color: #00ccff;
+    box-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
+}
+
+/* 3. Main Content Area */
+.main-content {
+    flex: 1; display: flex;
+    flex-direction: column;
+    background-color: #010101; min-height: 0;
+}
+
+header {
+    height: 45px; display: flex; align-items: center;
+    padding: 0 15px; border-bottom: 1px solid #1a1a1a;
+    background: #080808;
+}
+
+/* 4. Chat Area */
+.chat-box {
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 15px;
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px;
+    /* Smooth scrolling logic */
+    scroll-behavior: smooth;
+}
+
+.message {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 5px 8px; border-radius: 4px;
+}
+.message:hover {
+    background: rgba(0, 255, 65, 0.05);
+}
+
+.avatar {
+    width: 30px; height: 30px;
+    background-color: #001122; border: 1px solid #0066ff;
+    color: #00ccff; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; flex-shrink: 0;
+}
+
+.msg-content { display: flex; flex-direction: column; gap: 2px; }
+.user-name { color: #ff3333; font-size: 15px; font-weight: bold; }
+.user-name small { color: #0066ff; font-size: 10px; margin-left: 8px; }
+.msg-content p { color: #00ff41; font-size: 18px; line-height: 1.4; word-break: break-all; }
+
+/* 5. Input Area - */
+.input-area {
+    padding: 12px 15px; 
+    background-color: #000;
+    border-top: 1px solid #002266; 
+    flex-shrink: 0;
+    /* Mobile browser-er safe area handle kora */
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+.input-wrapper {
+    background-color: #050505; border: 1px solid #0066ff;
+    border-radius: 6px; display: flex; align-items: center;
+    padding: 0 10px; height: 50px;
+    box-shadow: inset 0 0 5px rgba(0, 102, 255, 0.2);
+}
+
+#user-input {
+    flex: 1; background: none; border: none;
+    color: #00ff41; outline: none; font-size: 15px; padding-left: 5px;
+}
+#user-input::placeholder { color: #0044aa; }
+
+#send-btn {
+    background-color: #0066ff; color: #ffffff;
+    border: none; padding: 10px 15px;
+    border-radius: 4px; cursor: pointer; font-weight: bold;
+    text-transform: uppercase; font-size: 11px; transition: 0.2s;
+}
+
+#send-btn:hover {
+    background-color: #00ff41; color: #000;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+}
+
+/* 6. MODAL STYLES */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10000;
+}
+
+.hacker-modal {
+    background: #000;
+    border: 1px solid #00ff41; 
+    padding: 25px; border-radius: 8px;
+    display: flex; flex-direction: column; gap: 15px;
+    width: 90%; max-width: 350px; 
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.danger-border {
+    border-color: #ff3333;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+}
+
+.hacker-modal h3 { margin-bottom: 10px; letter-spacing: 1px; }
+.green-text { color: #00ff41; }
+.red-text { color: #ff3333; }
+.hacker-modal p { font-size: 14px; color: #0066ff; line-height: 1.4; }
+
+.hacker-modal input {
+    background: #050505; border: 1px solid #00ff41;
+    color: #00ff41; padding: 10px;
+    border-radius: 4px; outline: none;
+    font-size: 15px;
+}
+
+.hacker-modal button {
+    background: #0066ff; color: #fff;
+    border: none; padding: 12px;
+    border-radius: 4px; cursor: pointer;
+    font-weight: bold; font-size: 14px;
+    transition: 0.2s; text-transform: uppercase;
+}
+
+.modal-buttons { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
+.danger-btn { background-color: #ff3333 !important; flex: 1; }
+.cancel-btn { background-color: #080808 !important; color: #ff3333 !important; border: 1px solid #ff3333 !important; flex: 1; }
