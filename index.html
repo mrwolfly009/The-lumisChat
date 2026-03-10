@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LumisChat | Secure Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="name-modal" class="modal">
+        <div class="modal-content hacker-modal">
+            <h3>SYSTEM ACCESS</h3>
+            <p>Enter credentials (nickname) to join:</p>
+            <input type="text" id="nickname-input" placeholder="User@Lumis..." autocomplete="off">
+            <button id="join-btn">AUTHORIZE</button>
+        </div>
+    </div>
+
+    <div id="channel-modal" class="modal" style="display: none;">
+        <div class="modal-content hacker-modal">
+            <h3 class="green-text">NEW CHANNEL</h3>
+            <input type="text" id="new-channel-icon" placeholder="Icon (e.g. #)" maxlength="1">
+            <input type="text" id="new-channel-name" placeholder="Channel Name..." autocomplete="off">
+            <button id="create-channel-btn">CREATE</button>
+            <button id="cancel-channel-btn" class="cancel-btn">CANCEL</button>
+        </div>
+    </div>
+
+    <div id="confirm-msg-modal" class="modal" style="display: none;">
+        <div class="modal-content hacker-modal danger-border">
+            <h3 class="red-text">CONFIRM DELETE</h3>
+            <p>Are you sure you want to delete this message, Ostad?</p>
+            <div class="modal-buttons">
+                <button id="delete-msg-confirm-btn" class="danger-btn">DELETE</button>
+                <button id="delete-msg-cancel-btn" class="cancel-btn">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-channel-modal" class="modal" style="display: none;">
+        <div class="modal-content hacker-modal danger-border">
+            <h3 class="red-text">CONFIRM DELETE</h3>
+            <p>Delete <span id="del-channel-name-display" class="green-text"></span>, Ostad?</p>
+            <div class="modal-buttons">
+                <button id="delete-channel-confirm-btn" class="danger-btn">DELETE</button>
+                <button id="delete-channel-cancel-btn" class="cancel-btn">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="server-icon add-server" title="Add Channel">+</div>
+            <div id="dynamic-channels" class="channel-scroll-container"></div>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <div class="header-info" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="hashtag">#</span>
+                        <h3 id="active-channel-name">general-chat</h3>
+                        <button id="share-link-btn" style="background:none; border:none; color:#0066ff; cursor:pointer; margin-left:15px; font-size:12px;">SHARE</button>
+                    </div>
+                    <button id="delete-current-channel" style="display:none; background:none; border:1px solid #ff3333; color:#ff3333; padding: 2px 8px; border-radius: 4px; cursor:pointer; font-size: 11px; font-weight: bold; text-transform: uppercase;">DELETE</button>
+                </div>
+            </header>
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="Type message here..." autocomplete="off">
+                    <button id="send-btn">SEND</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
