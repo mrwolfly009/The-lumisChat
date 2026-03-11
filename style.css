@@ -183,3 +183,36 @@ header {
 .modal-buttons { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
 .danger-btn { background-color: #ff3333 !important; flex: 1; }
 .cancel-btn { background-color: #080808 !important; color: #ff3333 !important; border: 1px solid #ff3333 !important; flex: 1; }
+
+/* New Header Banner Styles */
+.main-header-banner {
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #00ff41;
+    position: relative;
+    flex-shrink: 0; /* Ensures it doesn't shrink on small screens */
+}
+
+.main-header-banner h1 {
+    color: #00ff41;
+    font-size: 22px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+    margin: 0;
+}
+
+.glow-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #0066ff, transparent);
+    width: 80%;
+    margin: 5px auto 0;
+}
+
+/* Adjusting the app-container to handle the new element */
+.app-container {
+    display: flex; 
+    flex-direction: column; 
+    height: 100dvh; 
+}
